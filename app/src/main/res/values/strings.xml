@@ -35,6 +35,7 @@
     <string name="prompt_firstname">Prenom</string>
     <string name="prompt_male">Homme</string>
     <string name="prompt_female">Femme</string>
+    <string name="prompt_gender">Femme</string>
     <string name="prompt_birthday">Date de naissance</string>
     <string name="prompt_description">Présentez-vous!</string>
     <string name="action_sign_up">S\'inscrire</string>

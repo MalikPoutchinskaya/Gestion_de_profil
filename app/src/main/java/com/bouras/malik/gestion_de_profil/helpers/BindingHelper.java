@@ -1,6 +1,7 @@
 package com.bouras.malik.gestion_de_profil.helpers;
 
 import android.databinding.BindingAdapter;
+import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
 import com.bouras.malik.gestion_de_profil.R;
@@ -20,6 +21,15 @@ public class BindingHelper {
             mInstance = new BindingHelper();
         }
         return mInstance;
+    }
+
+    @BindingAdapter({"bind:displaySrcByGender"})
+    public static void displaySrcByGender(ImageView view, boolean isMasculine) {
+        Drawable image = isMasculine ?
+                view.getResources().getDrawable(R.drawable.ic_masculine_selected) :
+                view.getResources().getDrawable(R.drawable.ic_femenine_selected);
+
+        view.setImageDrawable(image);
     }
 
     @BindingAdapter({"bind:imageProfileUrl"})

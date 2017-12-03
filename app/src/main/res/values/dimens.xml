@@ -12,4 +12,7 @@
     <dimen name="spacing_medium">8dp</dimen>
     <dimen name="spacing_large">16dp</dimen>
     <dimen name="spacing_xlarge">32dp</dimen>
+
+
+    <dimen name="gender_icon_size">40dp</dimen>
 </resources>

@@ -19,7 +19,15 @@
     <style name="SignUpEditText" parent="WhiteText" />
 
     <style name="SignUpEditTextReverse">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="title">
         <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:layout_marginTop">26dp</item>
+        <item name="android:layout_marginBottom">9dp</item>
     </style>
 
     <style name="SignUpTextInputLayout" parent="TextAppearance.AppCompat">

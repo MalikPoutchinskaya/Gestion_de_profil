@@ -6,7 +6,9 @@ import android.arch.lifecycle.LiveData;
 import android.databinding.ObservableField;
 import android.support.annotation.NonNull;
 import android.view.View;
+import android.widget.RadioGroup;
 
+import com.bouras.malik.gestion_de_profil.R;
 import com.bouras.malik.gestion_de_profil.model.User;
 import com.bouras.malik.gestion_de_profil.model.dao.AppDataBase;
 import com.bouras.malik.gestion_de_profil.repository.UserRepository;
@@ -62,6 +64,10 @@ public class EditProfileViewModel extends AndroidViewModel {
     public void setPictureUrl(String path) {
         user.get().setPictureUrl(path);
         user.notifyChange();
+    }
+
+    public void onGenderChanged(RadioGroup radioGroup, int id) {
+        user.get().setMasculine(radioGroup.getCheckedRadioButtonId() == R.id.fragment_sign_up_radiobutton_male);
     }
 
 }

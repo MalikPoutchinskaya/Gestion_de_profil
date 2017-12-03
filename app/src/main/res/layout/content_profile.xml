@@ -30,63 +30,52 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <!-- Sexe -->
+            <ImageView android:layout_height="@dimen/gender_icon_size"
+                android:layout_width="match_parent"
+                app:displaySrcByGender="@{profileVM.user.masculine}"
+                tools:src="@drawable/ic_femenine_selected"/>
+
+            <!-- Email -->
+            <TextView
+                style="@style/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/prompt_email" />
+
             <TextView
                 android:id="@+id/fragment_sign_up_email"
                 style="@style/SignUpEditTextReverse"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/prompt_email"
-                android:maxLines="1"
-                android:text="@={profileVM.user.email}"
-                app:backgroundTint="@color/editTextTintInverse" />
+                android:text="@={profileVM.user.email}" />
 
-
-            <RadioGroup
-                android:id="@+id/fragment_sign_up_radiogroup_gender"
+            <!-- Age -->
+            <TextView
+                style="@style/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/fragment_sign_up_radiobutton_male"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="20dp"
-                    android:background="@drawable/selector_feminine"
-                    android:button="@android:color/transparent"
-                    android:checked="@{profileVM.user.masculine}"
-                    android:enabled="false" />
-
-                <RadioButton
-                    android:id="@+id/radioButton"
-                    style="@android:style/Widget.CompoundButton.RadioButton"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="20dp"
-                    android:background="@drawable/selector_masculine"
-                    android:button="@android:color/transparent"
-                    android:checked="@{!profileVM.user.masculine}"
-                    android:enabled="false" />
-            </RadioGroup>
-
+                android:text="@string/prompt_birthday" />
 
             <TextView
                 android:id="@+id/birthday"
                 style="@style/SignUpEditTextReverse"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/prompt_birthday"
-                android:maxLines="1"
                 android:text="@={profileVM.user.birthday}" />
 
+            <!-- Description -->
+            <TextView
+                style="@style/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/prompt_description" />
 
             <TextView
                 android:id="@+id/description"
                 style="@style/SignUpEditTextReverse"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:hint="@string/prompt_description"
+                android:layout_height="wrap_content"
                 android:text="@={profileVM.user.description}" />
 
         </LinearLayout>
