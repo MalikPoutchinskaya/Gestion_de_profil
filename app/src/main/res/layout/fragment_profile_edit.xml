@@ -1,0 +1,196 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:clickable="true"
+    android:focusable="true"
+    tools:context=".view.ui.activities.ProfileActivity">
+
+    <data>
+
+        <variable
+            name="editProfileVM"
+            type="com.bouras.malik.gestion_de_profil.viewmodel.EditProfileViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background_gradient"
+        android:focusableInTouchMode="true"
+
+        android:paddingTop="@dimen/activity_no_action_bar_vertical_margin">
+
+        <ImageView
+            android:id="@+id/close"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:onClick="close"
+            android:src="@drawable/ic_close_24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/done"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:onClick="@{editProfileVM.updateUser}"
+            android:src="@drawable/ic_done_24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:id="@+id/fragment_profile_edit_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/close">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/fragment_profile_edit_image_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="72dp"
+                    app:imageProfileUrl="@{editProfileVM.user.pictureUrl}"
+                    tools:src="@android:drawable/sym_def_app_icon" />
+
+
+                <android.support.design.widget.TextInputLayout
+                    style="@style/SignUpTextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/fragment_sign_up_nickname"
+                        style="@style/SignUpEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/prompt_firstname"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:text="@={editProfileVM.user.firstName}"
+                        app:backgroundTint="@color/editTextTintInverse" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    style="@style/SignUpTextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/fragment_sign_up_name"
+                        style="@style/SignUpEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/prompt_lastname"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:text="@={editProfileVM.user.lastName}"
+                        app:backgroundTint="@color/editTextTintInverse" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    style="@style/SignUpTextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/fragment_sign_up_email"
+                        style="@style/SignUpEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/prompt_email"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1"
+                        android:text="@={editProfileVM.user.email}"
+                        app:backgroundTint="@color/editTextTintInverse" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <RadioGroup
+                    android:id="@+id/fragment_sign_up_radiogroup_gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/fragment_sign_up_radiobutton_male"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_margin="20dp"
+                        android:background="@drawable/selector_feminine"
+                        android:button="@android:color/transparent"
+                        android:checked="@{editProfileVM.user.masculine}"
+                        android:onCheckedChanged="@{() -> editProfileVM.user.setMasculine(true)}" />
+
+                    <RadioButton
+                        android:id="@+id/radioButton"
+                        style="@android:style/Widget.CompoundButton.RadioButton"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_margin="20dp"
+                        android:background="@drawable/selector_masculine"
+                        android:button="@android:color/transparent"
+                        android:checked="@{!editProfileVM.user.masculine}"
+                        android:onCheckedChanged="@{() -> editProfileVM.user.setMasculine(false)}" />
+                </RadioGroup>
+
+                <android.support.design.widget.TextInputLayout
+                    style="@style/SignUpTextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/birthday"
+                        style="@style/SignUpEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="@string/prompt_birthday"
+                        android:inputType="date"
+                        android:maxLines="1"
+                        android:text="@={editProfileVM.user.birthday}" />
+                </android.support.design.widget.TextInputLayout>
+
+
+                <android.support.design.widget.TextInputLayout
+                    style="@style/SignUpTextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/description"
+                        style="@style/SignUpEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textMultiLine"
+                        android:lines="8"
+                        android:maxLines="10"
+                        android:minLines="6"
+                        android:scrollbars="vertical"
+                        android:text="@={editProfileVM.user.description}" />
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

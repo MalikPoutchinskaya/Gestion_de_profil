@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/tools">
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="white">#ffffff</color>
+    <color name="transparentWhite">#82ffffff</color>
+    <color name="transparent">#00ffffff</color>
+    <color name="colorPrimaryGradient">#3f99b5</color>
+
+    <!-- toolbar -->
+    <color name="black_alpha_40">#66000000</color>
+
+
+    <!-- Edit text color -->
+    <color name="editTextTintInverse">@color/transparentWhite</color>
+    <color name="colorGradient">
+        <gradient android:angle="180" android:endColor="@color/colorPrimary" android:gradientRadius="100" android:startColor="@color/colorPrimaryGradient" android:type="linear" />
+    </color>
+
+</resources>

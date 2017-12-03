@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:clickable="true"
+    android:focusable="true"
+    tools:context=".view.ui.activities.ProfileActivity"
+    tools:showIn="@layout/activity_profile">
+
+    <data>
+
+        <variable
+            name="profileVM"
+            type="com.bouras.malik.gestion_de_profil.viewmodel.ProfileViewModel" />
+    </data>
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingEnd="@dimen/activity_horizontal_margin"
+        android:paddingStart="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/fragment_sign_up_email"
+                style="@style/SignUpEditTextReverse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/prompt_email"
+                android:maxLines="1"
+                android:text="@={profileVM.user.email}"
+                app:backgroundTint="@color/editTextTintInverse" />
+
+
+            <RadioGroup
+                android:id="@+id/fragment_sign_up_radiogroup_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/fragment_sign_up_radiobutton_male"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/selector_feminine"
+                    android:button="@android:color/transparent"
+                    android:checked="@{profileVM.user.masculine}"
+                    android:enabled="false" />
+
+                <RadioButton
+                    android:id="@+id/radioButton"
+                    style="@android:style/Widget.CompoundButton.RadioButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/selector_masculine"
+                    android:button="@android:color/transparent"
+                    android:checked="@{!profileVM.user.masculine}"
+                    android:enabled="false" />
+            </RadioGroup>
+
+
+            <TextView
+                android:id="@+id/birthday"
+                style="@style/SignUpEditTextReverse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/prompt_birthday"
+                android:maxLines="1"
+                android:text="@={profileVM.user.birthday}" />
+
+
+            <TextView
+                android:id="@+id/description"
+                style="@style/SignUpEditTextReverse"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:hint="@string/prompt_description"
+                android:text="@={profileVM.user.description}" />
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</layout>

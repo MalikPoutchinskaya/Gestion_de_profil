@@ -1,0 +1,87 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppLogo">
+        <item name="android:textSize">40sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">32dp</item>
+
+    </style>
+
+    <!-- EDIT TEXT -->
+    <style name="SignUpEditText" parent="WhiteText" />
+
+    <style name="SignUpEditTextReverse">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="SignUpTextInputLayout" parent="TextAppearance.AppCompat">
+        <item name="android:textColorHint">@color/transparentWhite</item>
+    </style>
+
+    <style name="SignUpText" parent="WhiteText" />
+
+    <style name="SaleCondition" parent="LittleTextWhite" />
+
+    <style name="LoginActionText" parent="LittleText" />
+
+    <!-- BUTTONS -->
+    <style name="ButtonLight" parent="TextAppearance.AppCompat.Small">
+        <item name="android:background">@drawable/background_button_light</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="ButtonStrong" parent="TextAppearance.AppCompat.Small">
+        <item name="android:background">@drawable/background_gradient</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- BASIC -->
+    <style name="WhiteText">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="LittleText">
+        <item name="android:textSize">12sp</item>
+        <item name="android:paddingTop">12dp</item>
+    </style>
+
+    <style name="LittleTextWhite" parent="WhiteText">
+        <item name="android:textSize">12sp</item>
+        <item name="android:paddingTop">12dp</item>
+    </style>
+
+    <style name="LigneSeparator">
+        <item name="android:layout_height">2dp</item>
+        <item name="android:background">@drawable/background_gradient</item>
+        <item name="android:layout_marginLeft">32dp</item>
+        <item name="android:layout_marginRight">32dp</item>
+        <item name="android:layout_marginTop">56dp</item>
+        <item name="android:layout_marginBottom">56dp</item>
+        <item name="android:layout_centerInParent">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    <style name="FabStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">@dimen/spacing_large</item>
+        <item name="android:src">@drawable/ic_close_24dp</item>
+        <item name="borderWidth">0dp</item>
+        <item name="elevation">6dp</item>
+        <item name="pressedTranslationZ">12dp</item>
+        <item name="rippleColor">@android:color/white</item>
+    </style>
+
+</resources>
