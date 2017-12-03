@@ -130,7 +130,7 @@
                     android:orientation="horizontal">
 
                     <RadioButton
-                        android:id="@+id/fragment_sign_up_radiobutton_male"
+                        android:id="@+id/fragment_sign_up_radiobutton_fem"
                         android:layout_width="@dimen/gender_icon_size"
                         android:layout_height="@dimen/gender_icon_size"
                         android:layout_margin="20dp"
@@ -139,7 +139,7 @@
                         android:checked="@{!editProfileVM.user.masculine}" />
 
                     <RadioButton
-                        android:id="@+id/radioButton"
+                        android:id="@+id/fragment_sign_up_radiobutton_male"
                         style="@android:style/Widget.CompoundButton.RadioButton"
                         android:layout_width="@dimen/gender_icon_size"
                         android:layout_height="@dimen/gender_icon_size"
