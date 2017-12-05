@@ -8,6 +8,9 @@ import com.bouras.malik.gestion_de_profil.model.dao.AppDataBase;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+/**
+ * Repo pour un user
+ */
 public class UserRepository {
     /**
      * Instance de la class

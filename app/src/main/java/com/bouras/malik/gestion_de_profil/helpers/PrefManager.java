@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 /**
- *
+ * Gestion du sharedpref
  */
 public class PrefManager {
     // Shared preferences file name
@@ -31,14 +31,4 @@ public class PrefManager {
         editor.putBoolean(IS_FIRST_TIME_LAUNCH, isFirstTime);
         editor.commit();
     }
-
-    public String getServerToken() {
-        return pref.getString(SERVER_TOKEN, null);
-    }
-
-    public void setServerToken(String token) {
-        editor.putString(SERVER_TOKEN, token);
-        editor.commit();
-    }
-
 }

@@ -28,7 +28,8 @@
     <string name="error_facebook_sign_in">Une erreur s\'est produite lors de la connexion à votre compte Facebook</string>
     <string name="error_auth_failed">L\'identifiant ou le mot de passe est incorrect</string>
     <string name="error_forgot_password_failed">L\'adresse mail est inconnue</string>
-    
+    <string name="error_profil_empty">Renseignez votre profile !</string>
+
     <!-- SignUp -->
     <string name="info_sale_condition">En cliquant sur S\'inscire, vous accepter les Conditions d\'utilisation, la Politique de confidentialité et la Politique relative aux cookies de ChallEnge</string>
     <string name="prompt_lastname">Nom</string>

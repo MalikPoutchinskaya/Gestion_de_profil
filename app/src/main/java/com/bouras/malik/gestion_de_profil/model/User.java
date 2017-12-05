@@ -155,8 +155,10 @@ public class User extends PostableObject {
             return lastName;
         } else if (firstName != null && lastName == null) {
             return firstName;
-        } else {
+        } else if (firstName != null && lastName != null) {
             return firstName + " " + lastName;
+        } else {
+            return "";
         }
     }
 

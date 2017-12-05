@@ -1,7 +1,7 @@
 package com.bouras.malik.gestion_de_profil.helpers;
 
 /**
- * Created by Malik on 23/09/2017.
+ * Callback d'une prise de photo
  */
 
 public interface SelectedPictureEvent {

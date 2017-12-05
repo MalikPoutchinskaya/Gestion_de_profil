@@ -9,6 +9,9 @@
 
     <data>
 
+        <import type="android.view.View" />
+
+
         <variable
             name="profileVM"
             type="com.bouras.malik.gestion_de_profil.viewmodel.ProfileViewModel" />
@@ -25,59 +28,76 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <!-- Sexe -->
-            <ImageView android:layout_height="@dimen/gender_icon_size"
-                android:layout_width="match_parent"
-                app:displaySrcByGender="@{profileVM.user.masculine}"
-                tools:src="@drawable/ic_femenine_selected"/>
-
-            <!-- Email -->
-            <TextView
-                style="@style/title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/prompt_email" />
+            android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/fragment_sign_up_email"
-                style="@style/SignUpEditTextReverse"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@={profileVM.user.email}" />
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="@string/error_profil_empty"
+                android:visibility="@{profileVM.user == null ? View.VISIBLE : View.GONE}"
+                tools:visibility="gone" />
 
-            <!-- Age -->
-            <TextView
-                style="@style/title"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/prompt_birthday" />
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="@{profileVM.user != null ? View.VISIBLE : View.GONE}">
 
-            <TextView
-                android:id="@+id/birthday"
-                style="@style/SignUpEditTextReverse"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@={profileVM.user.birthday}" />
 
-            <!-- Description -->
-            <TextView
-                style="@style/title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/prompt_description" />
+                <!-- Sexe -->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/gender_icon_size"
+                    app:displaySrcByGender="@{profileVM.user.masculine}"
+                    tools:src="@drawable/ic_femenine_selected" />
 
-            <TextView
-                android:id="@+id/description"
-                style="@style/SignUpEditTextReverse"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@={profileVM.user.description}" />
+                <!-- Email -->
+                <TextView
+                    style="@style/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/prompt_email" />
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/fragment_sign_up_email"
+                    style="@style/SignUpEditTextReverse"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@={profileVM.user.email}" />
+
+                <!-- Age -->
+                <TextView
+                    style="@style/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/prompt_birthday" />
+
+                <TextView
+                    android:id="@+id/birthday"
+                    style="@style/SignUpEditTextReverse"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@={profileVM.user.birthday}" />
+
+                <!-- Description -->
+                <TextView
+                    style="@style/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/prompt_description" />
+
+                <TextView
+                    android:id="@+id/description"
+                    style="@style/SignUpEditTextReverse"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@={profileVM.user.description}" />
+
+            </LinearLayout>
+        </RelativeLayout>
     </android.support.v4.widget.NestedScrollView>
 </layout>
