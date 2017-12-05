@@ -11,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.bouras.malik.gestion_de_profil.R;
 import com.bouras.malik.gestion_de_profil.databinding.FragmentProfileEditBinding;
@@ -22,7 +23,7 @@ import com.bouras.malik.gestion_de_profil.model.User;
 import com.bouras.malik.gestion_de_profil.viewmodel.EditProfileViewModel;
 
 /**
- *
+ * Fragment d'edition d'un profile
  */
 public class EditProfileFragment extends Fragment implements SelectedPictureEvent {
 
@@ -44,7 +45,7 @@ public class EditProfileFragment extends Fragment implements SelectedPictureEven
             @Override
             public void onClick(View v) {
                 pictureHelper = new PictureHelper(EditProfileFragment.this, EditProfileFragment.this);
-                pictureHelper.selectImage();
+                launchPictureSelection();
             }
         });
 
@@ -56,13 +57,17 @@ public class EditProfileFragment extends Fragment implements SelectedPictureEven
         binding.setEditProfileVM(viewModel);
 
         PrefManager prefManager = new PrefManager(getContext());
-        if (prefManager.isFirstTimeLaunch()){
+        if (prefManager.isFirstTimeLaunch()) {
             viewModel.setUser(new User());
         }
 
         return view;
     }
 
+    /**
+     * observe le viexmodel
+     * @param viewModel
+     */
     private void observeViewModel(EditProfileViewModel viewModel) {
         viewModel.getUserObservable().observe(this, user -> {
             if (user != null) {
@@ -71,15 +76,23 @@ public class EditProfileFragment extends Fragment implements SelectedPictureEven
         });
     }
 
+    /**
+     * lance le mode de selection d'un image
+     */
+    private void launchPictureSelection() {
+        boolean hasPermission = PermissionHelper.checkPermission(EditProfileFragment.this);
+        if (hasPermission) {
+            pictureHelper.selectImage();
+        }
+    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {
             case PermissionHelper.REQUEST_READ_EXTERNAL_STORAGE:
+            case PermissionHelper.REQUEST_CAMER_STORAGE:
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    pictureHelper.selectImage();
-                } else {
-                    //code for deny
+                    launchPictureSelection();
                 }
                 break;
         }

@@ -1,5 +1,6 @@
 package com.bouras.malik.gestion_de_profil.helpers;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -9,6 +10,8 @@ import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
+
+import com.bouras.malik.gestion_de_profil.R;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,6 +27,7 @@ public class PictureHelper {
     public static int SELECT_FILE = 1;
 
     private Fragment fragment;
+    private Context context;
     private SelectedPictureEvent selectedPictureEvent;
 
     private String mCurrentPhotoPath;
@@ -31,6 +35,7 @@ public class PictureHelper {
 
     public PictureHelper(Fragment fragment, SelectedPictureEvent selectedPictureEvent) {
         this.fragment = fragment;
+        this.context = fragment.getContext();
         this.selectedPictureEvent = selectedPictureEvent;
     }
 
@@ -39,21 +44,19 @@ public class PictureHelper {
      * lancer un dialog pour choisir la galerie ou prendre une photo
      */
     public void selectImage() {
-        final CharSequence[] items = {"Prendre une photo", "Depuis la librarie",
-                "Annuler"};
-        AlertDialog.Builder builder = new AlertDialog.Builder(fragment.getContext());
-        builder.setTitle("Changer la photo de profile:");
+        final CharSequence[] items = {context.getString(R.string.picture_take_photo),
+                context.getString(R.string.picture_library),
+                context.getString(R.string.picture_cancel)};
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle( context.getString(R.string.picture_title));
         builder.setItems(items, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int item) {
-                boolean result = PermissionHelper.checkPermission(fragment.getContext());
-                if (items[item].equals("Prendre une photo")) {
-                    if (result)
+                if (items[item].equals(context.getString(R.string.picture_take_photo))) {
                         cameraIntent();
-                } else if (items[item].equals("Depuis la librarie")) {
-                    if (result)
+                } else if (items[item].equals(context.getString(R.string.picture_library))) {
                         galleryIntent();
-                } else if (items[item].equals("Annuler")) {
+                } else if (items[item].equals(context.getString(R.string.picture_cancel))) {
                     dialog.dismiss();
                 }
             }
@@ -67,7 +70,7 @@ public class PictureHelper {
     private void cameraIntent() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // Ensure that there's a camera activity to handle the intent
-        if (intent.resolveActivity(fragment.getContext().getPackageManager()) != null) {
+        if (intent.resolveActivity(context.getPackageManager()) != null) {
             // Create the File where the photo should go
             File photoFile = null;
             try {
@@ -78,7 +81,7 @@ public class PictureHelper {
             }
             // Continue only if the File was successfully created
             if (photoFile != null) {
-                Uri photoURI = FileProvider.getUriForFile(fragment.getContext(),
+                Uri photoURI = FileProvider.getUriForFile(context,
                         "com.bouras.malik.gestion_de_profil.fileprovider",
                         photoFile);
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
@@ -96,7 +99,7 @@ public class PictureHelper {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);//
-        fragment.startActivityForResult(Intent.createChooser(intent, "Select File"), SELECT_FILE);
+        fragment.startActivityForResult(Intent.createChooser(intent, context.getString(R.string.picture_file)), SELECT_FILE);
     }
 
     /**
@@ -105,9 +108,6 @@ public class PictureHelper {
      */
     public void onSelectFromGalleryResult(Intent data) {
         Uri selectedImageUri = data.getData();
-
-        //OI FILE Manager
-        String filemanagerstring = selectedImageUri.getPath();
 
         //MEDIA GALLERY
         String selectedImagePath = getPath(selectedImageUri);
@@ -152,7 +152,7 @@ public class PictureHelper {
         // try to retrieve the image from the media store first
         // this will only work for images selected from gallery
         String[] projection = { MediaStore.Images.Media.DATA };
-        Cursor cursor =  fragment.getContext().getContentResolver()
+        Cursor cursor =  context.getContentResolver()
                 .query(uri, projection, null, null, null);
         if( cursor != null ){
             int column_index = cursor

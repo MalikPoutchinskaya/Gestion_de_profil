@@ -45,4 +45,18 @@
     <!-- Menu -->
     <string name="action_settings">Settings</string>
     <string name="title_activity_profil">ProfilActivity</string>
+
+    <!-- Permission -->
+    <string name="permission_camera">Veuillez permettre à Challenge d\'acceder à votre caméra</string>
+    <string name="permission_title">Permissions necessaires</string>
+    <string name="permission_file">Veuillez permettre à Challenge d\'acceder à vos dossiers</string>
+
+    <!-- boite de dialogue -->
+    <string name="picture_take_photo">Prendre une photo</string>
+    <string name="picture_file">Choisir un fichier</string>
+    <string name="picture_library">Depuis la librarie</string>
+    <string name="picture_cancel">Annuler</string>
+    <string name="picture_title">Changer la photo de profile:</string>
+    <string name="picture_permission_denied">Vous n\'avez pas autorisé l\'application</string>
+
 </resources>

@@ -1,11 +1,14 @@
 package com.bouras.malik.gestion_de_profil.view.ui.activities;
 
 import android.animation.Animator;
+import android.app.Fragment;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -15,7 +18,10 @@ import android.view.inputmethod.InputMethodManager;
 
 import com.bouras.malik.gestion_de_profil.R;
 import com.bouras.malik.gestion_de_profil.databinding.ActivityProfileBinding;
+import com.bouras.malik.gestion_de_profil.helpers.PermissionHelper;
+import com.bouras.malik.gestion_de_profil.helpers.PictureHelper;
 import com.bouras.malik.gestion_de_profil.model.User;
+import com.bouras.malik.gestion_de_profil.view.ui.fragments.EditProfileFragment;
 import com.bouras.malik.gestion_de_profil.viewmodel.ProfileViewModel;
 
 import io.codetail.animation.ViewAnimationUtils;
